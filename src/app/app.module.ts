@@ -11,9 +11,10 @@ import { reducers, metaReducers } from './reducers';
 
 // not use in prod
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ProductItemComponent } from './components/products/product-item/product-item.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProductItemComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
