@@ -7,7 +7,7 @@ import { environment } from '../environments/environment';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers, metaReducers } from './reducers';
+import { reducers, metaReducers } from './store/reducers';
 
 // not use in prod
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
