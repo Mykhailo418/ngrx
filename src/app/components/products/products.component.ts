@@ -4,6 +4,7 @@ import {ProductItem} from './product-item/product-item.interface';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {MainState, selectProducts} from '../../store/reducers'
+import {LoadProducts} from '../../store/actions/products.action';
 
 @Component({
   selector: 'app-products',
@@ -15,6 +16,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.products$ = this.store.select(selectProducts);
+    this.store.dispatch(new LoadProducts());
   }
 
 }

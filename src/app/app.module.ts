@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,9 @@ import { reducers, metaReducers } from './store/reducers';
 // not use in prod
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+// Effects
+import {ProductsEffects} from './store/effects/products.effects';
+
 // Components
 import { ProductsComponent } from './components/products/products.component';
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
@@ -21,8 +25,9 @@ import { ProductItemComponent } from './components/products/product-item/product
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([ProductsEffects]),
     environment.production ? [] : StoreDevtoolsModule.instrument()
   ],
   providers: [],
