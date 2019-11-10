@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductItem} from './product-item/product-item.interface';
-import {ProductsService} from '../../services/products.service';
+
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {MainState, selectProducts} from '../../store/reducers'
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html'
 })
 export class ProductsComponent implements OnInit {
-  products: ProductItem[];
-  constructor(private productsService: ProductsService) { }
+  products$: Observable<ProductItem[]>;
+  constructor(private store: Store<MainState>) { }
 
   ngOnInit() {
-    this.productsService.getProducts().subscribe(
-      products => this.products = products;
-    );
+    this.products$ = this.store.select(selectProducts);
   }
 
 }

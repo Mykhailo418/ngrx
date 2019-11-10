@@ -9,6 +9,7 @@ export const LOAD_PRODUCTS_ERROR = '[Products] Load Products Error';
 // actions
 export class LoadProducts implements Action {
   readonly type = LOAD_PRODUCTS;
+  constructor(public payload: any){}
 }
 export class LoadProductsSuccess implements Action {
   readonly type = LOAD_PRODUCTS_SUCCESS;

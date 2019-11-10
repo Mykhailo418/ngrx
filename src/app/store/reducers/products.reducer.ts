@@ -35,5 +35,10 @@ export function productsReducer(state = initState, action: ProductsActions) : Pr
         loaded: false,
       }
   }
-  return stste;
+  return state;
 }
+
+// selectors
+export const getProductsData = (state: ProductState) => state.data;
+export const getProductsLoading = (state: ProductState) => state.loading;
+export const getProductsLoaded = (state: ProductState) => state.loaded;
