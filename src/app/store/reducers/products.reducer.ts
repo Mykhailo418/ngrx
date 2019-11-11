@@ -2,13 +2,13 @@ import {ProductItem} from '../../components/products/product-item/product-item.i
 import {ProductsActions, LOAD_PRODUCTS, LOAD_PRODUCTS_SUCCESS, LOAD_PRODUCTS_ERROR} from '../actions/products.action';
 
 export interface ProductState {
-  data: ProductItem[];
+  data: {[id: number]: ProductItem};
   loaded: boolean;
   loading: boolean;
 }
 
 export const initState = {
-  data: [],
+  data: {},
   loaded: false,
   loading: false
 };
@@ -22,11 +22,15 @@ export function productsReducer(state = initState, action: ProductsActions) : Pr
         loading: true
       }
     case LOAD_PRODUCTS_SUCCESS:
+      const entities = payload.reduce((entities, product) => {
+        entities[product.id] = product;
+        return entities;
+      }, {});
       return {
         ...state,
         loading: false,
         loaded: true,
-        data: payload
+        data: entities
       }
     case LOAD_PRODUCTS_ERROR:
       return {

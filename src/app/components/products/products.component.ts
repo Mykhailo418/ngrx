@@ -3,7 +3,7 @@ import {ProductItem} from './product-item/product-item.interface';
 
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {MainState, selectProducts} from '../../store/reducers'
+import {MainState, selectProductsArray} from '../../store/reducers'
 import {LoadProducts} from '../../store/actions/products.action';
 
 @Component({
@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   constructor(private store: Store<MainState>) { }
 
   ngOnInit() {
-    this.products$ = this.store.select(selectProducts);
+    this.products$ = this.store.select(selectProductsArray);
     this.store.dispatch(new LoadProducts());
   }
 
