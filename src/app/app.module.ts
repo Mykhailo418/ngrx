@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers, metaReducers } from './store/reducers';
+import { reducers, metaReducers, CustomSerializer } from './store/reducers';
 
 // not use in prod
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -19,7 +19,7 @@ import {ProductsEffects} from './store/effects/products.effects';
 // Components
 import { ProductsComponent } from './components/products/products.component';
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [AppComponent, ProductItemComponent, ProductsComponent],
@@ -32,7 +32,9 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     environment.production ? [] : StoreDevtoolsModule.instrument(),
     StoreRouterConnectingModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide: RouterStateSerializer, useClass: CustomSerializer}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
