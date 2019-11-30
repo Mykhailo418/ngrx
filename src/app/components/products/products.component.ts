@@ -3,7 +3,8 @@ import {ProductItem} from './product-item/product-item.interface';
 
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {MainState, selectProductsArray} from '../../store/reducers'
+import {MainState} from '../../store/reducers'
+import {selectProductsArray} from '../../store/selectors'
 import {LoadProducts} from '../../store/actions/products.action';
 
 @Component({
