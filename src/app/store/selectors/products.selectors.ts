@@ -13,3 +13,5 @@ export const selectProductsArray = createSelector(selectProducts,
 export const selectProductsLoading = createSelector(getProducts, getProductsLoading);
 export const selectProductsLoaded = createSelector(getProducts, getProductsLoaded);
 export const getRouterState = createFeatureSelector<RouterReducerState<RouterStateUrl>>('routerReducer');
+export const selectProducFromRouting = createSelector(getRouterState, selectProducts,
+  (router, entities) => entities[router.state.params.id]);

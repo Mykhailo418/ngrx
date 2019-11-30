@@ -1,4 +1,4 @@
-<section style="height:200px; overflow: scroll">
+<section style="height:200px; overflow: auto">
   <div *ngFor="let product of products$ | async">
     <app-product-item [product]="product"></app-product-item>
   </div>

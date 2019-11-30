@@ -1,3 +1,10 @@
 <ul>
-  <li>{{product.name}}</li>
+  <li>
+    <a class="nav-link"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}"
+      [routerLink]="['/product/'+product.id]">
+        {{product.name}}
+      </a>
+    </li>
 </ul>

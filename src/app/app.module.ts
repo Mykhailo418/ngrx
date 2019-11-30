@@ -20,9 +20,10 @@ import {ProductsEffects} from './store/effects/products.effects';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
+import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductItemComponent, ProductsComponent],
+  declarations: [AppComponent, ProductItemComponent, ProductsComponent, ProductDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
