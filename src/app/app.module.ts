@@ -15,21 +15,23 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // Effects
 import {ProductsEffects} from './store/effects/products.effects';
+import {RouterEffects} from './store/effects/router.effects';
 
 // Components
 import { ProductsComponent } from './components/products/products.component';
 import { ProductItemComponent } from './components/products/product-item/product-item.component';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductItemComponent, ProductsComponent, ProductDetailsComponent],
+  declarations: [AppComponent, ProductItemComponent, ProductsComponent, ProductDetailsComponent, MenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([ProductsEffects]),
+    EffectsModule.forRoot([ProductsEffects, RouterEffects]),
     environment.production ? [] : StoreDevtoolsModule.instrument(),
     StoreRouterConnectingModule.forRoot()
   ],
