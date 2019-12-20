@@ -1,16 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import {ProductItem} from './product-item.interface';
 
 @Component({
   selector: 'app-product-item',
-  templateUrl: './product-item.component.html'
+  templateUrl: './product-item.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductItemComponent implements OnInit {
+export class ProductItemComponent {
   @Input('product') product: ProductItem;
   constructor() { }
-
-  ngOnInit() {
-    //console.log(this.product);
-  }
-
 }
